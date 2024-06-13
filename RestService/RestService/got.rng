@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<element name="GameOfThronesCharacter" xmlns="http://relaxng.org/ns/structure/1.0"
+         ns="http://schemas.datacontract.org/2004/07/RestService.Model">
+  <element name="Id">
+	<text/>
+  </element>
+  <element name="FirstName">
+    <text/>
+  </element>
+  <element name="LastName">
+    <text/>
+  </element>
+  <element name="FullName">
+    <text/>
+  </element>
+  <element name="Title">
+    <text/>
+  </element>
+  <element name="Family">
+    <text/>
+  </element>
+  <element name="Image">
+    <text/>
+  </element>
+  <element name="ImageUrl">
+    <text/>
+  </element>
+</element>

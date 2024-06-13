@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SearchCharacters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCharactersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCharactersResult" type="tns:ArrayOfGameOfThronesCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGameOfThronesCharacter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GameOfThronesCharacter" nillable="true" type="tns:GameOfThronesCharacter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GameOfThronesCharacter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Family" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchContinent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchContinentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchContinentResult" type="tns:GameOfThronesContinent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GameOfThronesContinent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchCharactersSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCharacters" />
+  </wsdl:message>
+  <wsdl:message name="SearchCharactersSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCharactersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchContinentSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchContinent" />
+  </wsdl:message>
+  <wsdl:message name="SearchContinentSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchContinentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CharacterSearchServiceSoap">
+    <wsdl:operation name="SearchCharacters">
+      <wsdl:input message="tns:SearchCharactersSoapIn" />
+      <wsdl:output message="tns:SearchCharactersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchContinent">
+      <wsdl:input message="tns:SearchContinentSoapIn" />
+      <wsdl:output message="tns:SearchContinentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CharacterSearchServiceSoap" type="tns:CharacterSearchServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchCharacters">
+      <soap:operation soapAction="http://tempuri.org/SearchCharacters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchContinent">
+      <soap:operation soapAction="http://tempuri.org/SearchContinent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CharacterSearchServiceSoap12" type="tns:CharacterSearchServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchCharacters">
+      <soap12:operation soapAction="http://tempuri.org/SearchCharacters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchContinent">
+      <soap12:operation soapAction="http://tempuri.org/SearchContinent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CharacterSearchService">
+    <wsdl:port name="CharacterSearchServiceSoap" binding="tns:CharacterSearchServiceSoap">
+      <soap:address location="https://localhost:44308/CharacterSearchService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CharacterSearchServiceSoap12" binding="tns:CharacterSearchServiceSoap12">
+      <soap12:address location="https://localhost:44308/CharacterSearchService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
